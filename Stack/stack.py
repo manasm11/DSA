@@ -8,13 +8,19 @@ class Stack:
         self._count += 1
 
     def pop(self):
-        assert self._count > 0, "Stack is empty."
-        self._count -= 1
-        return self._list.pop()
+        try:
+            assert self._count > 0, "Stack is empty."
+            self._count -= 1
+            return self._list.pop()
+        except AssertionError:
+            print("[-] STACK IS EMPTY !!!")
 
     def peek(self):
-        assert self._count > 0, "Stack is empty."
-        return self._list[-1]
+        try:
+            assert self._count > 0, "Stack is empty."
+            return self._list[-1]
+        except AssertionError:
+            print("[-] STACK IS EMPTY !!!")
 
     def is_empty(self):
         return self._count < 1
