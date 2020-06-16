@@ -1,5 +1,7 @@
 from random import randint
 from timeit import default_timer as timer
+from Array.Sorting.quickSort import quick_sort
+from Array.Searching.binarySearch import binary_search
 
 
 def swap_vs_compare(n=10000):
@@ -17,12 +19,22 @@ def swap_vs_compare(n=10000):
     print(f"Time for {n} swaps = {end - start}")
 
 
-def time(function, n=1000):
+def sort_time(function, n=1000):
     list_of_numbers = generate_random_list(n)
     start = timer()
     function(list_of_numbers)
     end = timer()
     return end - start
+
+
+def search_time(function, n=1000):
+    list_of_numbers = generate_random_list(n)
+    if function == binary_search:
+        quick_sort(list_of_numbers)
+    start = timer()
+    function(list_of_numbers, 1000.0)
+    end = timer()
+    return (end - start) * 1000
 
 
 def input_list_from_user():
